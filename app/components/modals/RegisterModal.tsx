@@ -46,18 +46,16 @@ export const RegisterModal = () => {
     //     setIsLoading(false);
     //   });
 
-    console.log(data);
-
     const { error } = await signUpEmailAction(data);
-
-    console.log(error);
 
     if (error) {
       toast.error(error);
       setIsLoading(false);
     } else {
       toast.error("Register successed, please check you email");
-      router.push("/auth/sign-up/success");
+      registerModal.onClose();
+      router.push("/");
+      router.refresh();
     }
   };
 

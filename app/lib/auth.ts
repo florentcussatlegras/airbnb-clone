@@ -33,7 +33,7 @@ const options = {
       hash: hashPassword,
       verify: verifyPassword,
     },
-    requireEmailVerification: true,
+    requireEmailVerification: false,
     sendResetPassword: async ({user, url, token}, request) => {
       await sendEmailAction({
         to: user.email,
@@ -49,21 +49,21 @@ const options = {
       console.log(`Password for user ${user.email} has been reset.`);
     },
   },
-  emailVerification: {
-    sendOnSignUp: true,
-    autoSignInAfterVerification: false,
-    sendVerificationEmail: async ({ user, url }) => {
-      await sendEmailAction({
-        to: user.email,
-        subject: "Vérification de votre adresse email",
-        meta: {
-          description:
-            "Please verify your email address to complete registration.",
-          link: url,
-        },
-      });
-    },
-  },
+  // emailVerification: {
+  //   sendOnSignUp: true,
+    // autoSignInAfterVerification: false,
+    // sendVerificationEmail: async ({ user, url }) => {
+    //   await sendEmailAction({
+    //     to: user.email,
+    //     subject: "Vérification de votre adresse email",
+    //     meta: {
+    //       description:
+    //         "Please verify your email address to complete registration.",
+    //       link: url,
+    //     },
+    //   });
+    // },
+  // },
   hooks: {
     before: createAuthMiddleware(async (ctx) => {
       if (ctx.path === "/sign-up/email") {

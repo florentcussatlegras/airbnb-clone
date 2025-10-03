@@ -40,7 +40,9 @@ export const LoginModal = () => {
       setIsLoading(false);
     } else {
       toast.error("Welcome, happy to see you again");
-      router.push("/");
+      loginModal.onClose();
+      router.push("/profile");
+      router.refresh();
     }
   }
 

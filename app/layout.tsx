@@ -8,7 +8,6 @@ import { ToasterProvider } from "./components/providers/ToasterProvider";
 import { LoginModal } from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 
-
 export const metadata: Metadata = {
   title: "Airbnb",
   description: "Airbnb clone",
@@ -24,6 +23,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={`${font.className} antialiased`}>
@@ -33,6 +33,7 @@ export default async function RootLayout({
           <LoginModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
+        {JSON.stringify(currentUser)}
         {children}
       </body>
     </html>
