@@ -11,8 +11,11 @@ import { Heading } from "../Heading";
 import { Input } from "../inputs/Input";
 import toast from "react-hot-toast";
 import { Button } from "../Button";
+import signUpEmailAction from "@/app/actions/sign-up-email.action";
+import { useRouter } from "next/navigation";
 
 export const RegisterModal = () => {
+  const router = useRouter();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,20 +31,34 @@ export const RegisterModal = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  async function onSubmit(data): Promise<void> {
     setIsLoading(true);
 
-    axios
-      .post("/api/register", data)
-      .then(() => {
-        registerModal.onClose();
-      })
-      .catch((error) => {
-        toast.error("Something went wrong");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    // axios
+    //   .post("/api/register", data)
+    //   .then(() => {
+    //     registerModal.onClose();
+    //   })
+    //   .catch((error) => {
+    //     toast.error("Something went wrong");
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
+
+    console.log(data);
+
+    const { error } = await signUpEmailAction(data);
+
+    console.log(error);
+
+    if (error) {
+      toast.error(error);
+      setIsLoading(false);
+    } else {
+      toast.error("Register successed, please check you email");
+      router.push("/auth/sign-up/success");
+    }
   };
 
   const bodyContent = (

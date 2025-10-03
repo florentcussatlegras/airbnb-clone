@@ -20,38 +20,95 @@ enum UserRole {
 }
 
 model User {
-  id             String    @id @default(uuid())
-  name           String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  image          String?
-  hashedPassword String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id        String   @id
+  createdAt DateTime
+  updatedAt DateTime
+
+  name          String
+  email         String    @unique
+  emailVerified Boolean
+  image         String?
+  role          UserRole  @default(USER)
+  banned        Boolean?
+  banReason     String?
+  banExpires    DateTime?
+
   favoriteIds    String[]
 
+  session      Session[]
   accounts     Account[]
   listings     Listing[]
   reservations Reservation[]
 }
 
-model Account {
-  id                String  @id @default(cuid())
-  userId            String 
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Session {
+  id        String   @id
+  createdAt DateTime
+  updatedAt DateTime
 
-  @@unique([provider, providerAccountId])
+  expiresAt      DateTime
+  token          String   @unique
+  ipAddress      String?
+  userAgent      String?
+  impersonatedBy String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
 }
+
+model Account {
+  id        String   @id
+  createdAt DateTime
+  updatedAt DateTime
+
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("account")
+}
+
+model Verification {
+  id        String    @id
+  createdAt DateTime?
+  updatedAt DateTime?
+
+  identifier String
+  value      String
+  expiresAt  DateTime
+
+  @@map("verification")
+}
+
+
+// model Account {
+//   id                String  @id @default(cuid())
+//   userId            String 
+//   type              String
+//   provider          String
+//   providerAccountId String
+//   refresh_token     String?
+//   access_token      String?
+//   expires_at        Int?
+//   token_type        String?
+//   scope             String?
+//   id_token          String?
+//   session_state     String?
+//   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+// }
 
 model Listing {
   id String @id @default(cuid())

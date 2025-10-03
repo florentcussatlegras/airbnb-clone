@@ -7,7 +7,7 @@ import { admin, customSession } from "better-auth/plugins";
 import { hashPassword, verifyPassword } from "@/app/lib/argon2";
 import prisma from "../lib/prisma";
 import { getValidDomains, normalizeName } from "./utils";
-import { UserRole } from "@prisma/client";
+import { UserRole } from "@/generated/prisma";
 import { ac, roles } from "@/app/lib/permissions";
 import { sendEmailAction } from "../actions/send-email.action";
 
@@ -109,11 +109,11 @@ const options = {
   },
   user: {
     additionalFields: {
-      firstname: {
-        type: "string",
-        required: true,
-        input: true,
-      },
+      // firstname: {
+      //   type: "string",
+      //   required: true,
+      //   input: true,
+      // },
       role: {
         type: ["USER", "ADMIN"] as Array<UserRole>,
         input: false,
@@ -156,7 +156,7 @@ export const auth = betterAuth({
         },
         user: {
           id: user.id,
-          firstname: user.firstname,
+          // firstname: user.firstname,
           name: user.name,
           email: user.email,
           image: user.image,
