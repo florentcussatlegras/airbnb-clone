@@ -109,11 +109,6 @@ const options = {
   },
   user: {
     additionalFields: {
-      // firstname: {
-      //   type: "string",
-      //   required: true,
-      //   input: true,
-      // },
       role: {
         type: ["USER", "ADMIN"] as Array<UserRole>,
         input: false,
@@ -156,7 +151,6 @@ export const auth = betterAuth({
         },
         user: {
           id: user.id,
-          // firstname: user.firstname,
           name: user.name,
           email: user.email,
           image: user.image,
