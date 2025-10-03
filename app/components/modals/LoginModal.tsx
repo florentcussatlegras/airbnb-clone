@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { Button } from "../Button";
 import { useRouter } from "next/navigation";
 import signInEmailAction from "@/app/actions/sign-in-email.action";
+import { SignInOauthButton } from "../buttons/sign-in-oauth-button";
 
 export const LoginModal = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ export const LoginModal = () => {
       toast.error(error);
       setIsLoading(false);
     } else {
-      toast.error("Welcome, happy to see you again");
+      toast.success("Welcome, happy to see you again");
       loginModal.onClose();
       router.push("/profile");
       router.refresh();
@@ -72,7 +73,7 @@ export const LoginModal = () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button
+      {/* <Button
         outline
         label="Continue with Google"
         icon={FcGoogle}
@@ -83,7 +84,9 @@ export const LoginModal = () => {
         label="Continue with Github"
         icon={AiFillGithub}
         onClick={() => {}}
-      />
+      /> */}
+      <SignInOauthButton provider="google" />
+      <SignInOauthButton provider="github" />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Doesn't have an account?</div>

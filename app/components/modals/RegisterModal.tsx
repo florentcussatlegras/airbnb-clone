@@ -52,7 +52,7 @@ export const RegisterModal = () => {
       toast.error(error);
       setIsLoading(false);
     } else {
-      toast.error("Register successed, please check you email");
+      toast.success("Register successed, please check you email");
       registerModal.onClose();
       router.push("/");
       router.refresh();

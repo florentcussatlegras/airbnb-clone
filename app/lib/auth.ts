@@ -124,7 +124,8 @@ const options = {
   },
   account: {
     accountLinking: {
-      enabled: false,
+      enabled: true,
+      trustedProviders: ["google", "github"]
     },
   },
   plugins: [
