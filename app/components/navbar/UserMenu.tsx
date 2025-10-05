@@ -4,10 +4,12 @@ import React, { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar } from "../Avatar";
 import { MenuItem } from "./MenuItem";
+
 import useRegisterModal from "../../hooks/useRegisterModal";
 import useLoginModal from "../../hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
+
 import { User } from "@/generated/prisma";
-import { auth } from "@/app/lib/auth";
 import { authClient } from "@/app/lib/auth-client";
 import { useRouter } from "next/navigation";
 
@@ -19,6 +21,8 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
@@ -26,6 +30,19 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
+
+  function onOpenRentModal() {
+    setIsOpen(false);
+    rentModal.onOpen();
+  }
 
   function onOpenLoginModal() {
     setIsOpen(false);
@@ -38,22 +55,22 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }
 
   async function onSignOut() {
-          await authClient.signOut({
-            fetchOptions: {
-              onSuccess: () => {
-                setIsOpen(false);
-                router.push("/");
-                router.refresh();
-              },
-            },
-         });
-      }
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          setIsOpen(false);
+          router.push("/");
+          router.refresh();
+        },
+      },
+    });
+  }
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
           Airbnb your home
@@ -78,7 +95,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={() => {}} label="Airbnb my home" />
+                <MenuItem onClick={onOpenRentModal} label="Airbnb my home" />
                 <hr />
                 <MenuItem onClick={onSignOut} label="Logout" />
               </>

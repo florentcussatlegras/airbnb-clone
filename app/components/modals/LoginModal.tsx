@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useLoginModal from "../../hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { Modal } from "./Modal";
 import { Heading } from "../Heading";
 import { Input } from "../inputs/Input";
@@ -14,10 +15,12 @@ import { Button } from "../Button";
 import { useRouter } from "next/navigation";
 import signInEmailAction from "@/app/actions/sign-in-email.action";
 import { SignInOauthButton } from "../buttons/sign-in-oauth-button";
+import { RegisterModal } from "./RegisterModal";
 
 export const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -46,6 +49,11 @@ export const LoginModal = () => {
       router.refresh();
     }
   }
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -89,12 +97,12 @@ export const LoginModal = () => {
       <SignInOauthButton provider="github" />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Doesn't have an account?</div>
+          <div>First time using Airbnb?</div>
           <div
-            onClick={loginModal.onClose}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Sign Up
+            Create an account
           </div>
         </div>
       </div>

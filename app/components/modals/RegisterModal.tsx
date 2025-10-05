@@ -13,10 +13,13 @@ import toast from "react-hot-toast";
 import { Button } from "../Button";
 import signUpEmailAction from "@/app/actions/sign-up-email.action";
 import { useRouter } from "next/navigation";
+import { SignInOauthButton } from "../buttons/sign-in-oauth-button";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 export const RegisterModal = () => {
   const router = useRouter();
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -57,7 +60,12 @@ export const RegisterModal = () => {
       router.push("/");
       router.refresh();
     }
-  };
+  }
+
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -93,7 +101,7 @@ export const RegisterModal = () => {
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
-      <Button
+      {/* <Button
         outline
         label="Continue with Google"
         icon={FcGoogle}
@@ -104,12 +112,14 @@ export const RegisterModal = () => {
         label="Continue with Github"
         icon={AiFillGithub}
         onClick={() => {}}
-      />
+      /> */}
+      <SignInOauthButton provider="google" />
+      <SignInOauthButton provider="github" />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Already have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Log in
