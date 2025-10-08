@@ -33,7 +33,7 @@ model User {
   banReason     String?
   banExpires    DateTime?
 
-  favoriteIds    String[]
+  favoriteIds String[]
 
   session      Session[]
   accounts     Account[]
@@ -91,7 +91,6 @@ model Verification {
   @@map("verification")
 }
 
-
 // model Account {
 //   id                String  @id @default(cuid())
 //   userId            String 
@@ -111,32 +110,32 @@ model Verification {
 // }
 
 model Listing {
-  id String @id @default(cuid())
-  title String
-  description String
-  imageSrc String
-  createdAt DateTime @default(now())
-  category String
-  roomCount Int
+  id            String   @id @default(cuid())
+  title         String
+  description   String
+  imageSrc      String
+  createdAt     DateTime @default(now())
+  category      String
+  roomCount     Int
   bathroomCount Int
-  guestCount Int
+  guestCount    Int
   locationValue String
-  userId String
-  price Int
+  userId        String
+  price         Int
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
 
 model Reservation {
-  id String @id @default(cuid())
-  userId String
-  listingId String
-  startDate DateTime
-  endDate DateTime
+  id         String   @id @default(cuid())
+  userId     String
+  listingId  String
+  startDate  DateTime
+  endDate    DateTime
   totalPrice Int
-  createdAt DateTime @default(now())
+  createdAt  DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }
