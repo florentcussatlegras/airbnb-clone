@@ -57,6 +57,7 @@ export const RegisterModal = () => {
     } else {
       toast.success("Register successed, please check you email");
       registerModal.onClose();
+      loginModal.onOpen();
       router.push("/");
       router.refresh();
     }
