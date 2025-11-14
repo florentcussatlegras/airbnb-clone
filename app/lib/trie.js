@@ -19,6 +19,7 @@ function TrieNode(letter) {
     // return wordLetters.join("");
 
     const wordLetters = [];
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     let node = this;
 
     while (node.prevLetter) {
