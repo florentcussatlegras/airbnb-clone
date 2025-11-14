@@ -1,6 +1,7 @@
 "use client";
 
 import { ParsedQuery } from "query-string";
+import { StringifiableRecord } from "query-string";
 import qs from "query-string";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
@@ -22,14 +23,13 @@ enum STEPS {
    INFO = 2,
 }
 
-interface SearchQuery {
+interface SearchQuery extends StringifiableRecord {
   locationValue?: string;
   guestCount?: number;
   roomCount?: number;
   bathroomCount?: number;
   startDate?: string;
   endDate?: string;
-  [key: string]: unknown; // autorise les autres params
 }
 
 const SearchModal = () => {

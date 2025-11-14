@@ -34,7 +34,7 @@ export const RegisterModal = () => {
     },
   });
 
-  async function onSubmit(data): Promise<void> {
+  async function onSubmit(data: any): Promise<void> {
     setIsLoading(true);
 
     // axios
