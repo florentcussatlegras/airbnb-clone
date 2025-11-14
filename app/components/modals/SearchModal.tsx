@@ -1,5 +1,6 @@
 "use client";
 
+import { ParsedQuery } from "query-string";
 import qs from "query-string";
 import dynamic from "next/dynamic";
 import { useCallback, useMemo, useState } from "react";
@@ -19,6 +20,16 @@ enum STEPS {
    LOCATION = 0,
    DATE = 1,
    INFO = 2,
+}
+
+interface SearchQuery {
+  locationValue?: string;
+  guestCount?: number;
+  roomCount?: number;
+  bathroomCount?: number;
+  startDate?: string;
+  endDate?: string;
+  [key: string]: unknown; // autorise les autres params
 }
 
 const SearchModal = () => {
@@ -59,13 +70,13 @@ const SearchModal = () => {
          return onNext();
       }
 
-      let currentQuery = {};
+      let currentQuery: SearchQuery = {};
 
       if (params) {
          currentQuery = qs.parse(params.toString());
       }
 
-      const updatedQuery: any = {
+      const updatedQuery: SearchQuery = {
          ...currentQuery,
          locationValue: location?.value,
          guestCount,

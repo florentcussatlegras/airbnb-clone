@@ -1,5 +1,6 @@
 "use client";
 
+import { ParsedQuery } from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { IconType } from "react-icons";
@@ -20,13 +21,13 @@ export const CategoryBox: React.FC<CategoryBoxProps> = ({
   const params = useSearchParams();
 
   const handleClick = useCallback(() => {
-    let currentQuery = {};
+    let currentQuery: ParsedQuery<string> = {};
 
     if (params) {
       currentQuery = qs.parse(params.toString());
     }
 
-    const updatedQuery: any = {
+    const updatedQuery: ParsedQuery<string> = {
       ...currentQuery,
       category: label,
     };

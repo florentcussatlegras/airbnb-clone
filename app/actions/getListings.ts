@@ -1,3 +1,4 @@
+import { Prisma } from "@/generated/prisma";
 import prisma from "../lib/prisma";
 
 export interface IListingsParams {
@@ -21,10 +22,10 @@ export default async function getListings(params: IListingsParams) {
       startDate,
       endDate,
       locationValue,
-      category
+      category,
     } = await params;
 
-    let query: any = {};
+    const query: Prisma.ListingWhereInput = {};
 
     if (userId) {
       query.userId = userId;
@@ -36,20 +37,20 @@ export default async function getListings(params: IListingsParams) {
 
     if (guestCount) {
       query.guestCount = {
-        gte: +guestCount
-      }
+        gte: +guestCount,
+      };
     }
 
     if (roomCount) {
       query.roomCount = {
-        gte: +roomCount
-      }
+        gte: +roomCount,
+      };
     }
 
     if (bathroomCount) {
       query.bathroomCount = {
-        gte: +bathroomCount
-      }
+        gte: +bathroomCount,
+      };
     }
 
     if (locationValue) {
@@ -62,17 +63,17 @@ export default async function getListings(params: IListingsParams) {
           some: {
             OR: [
               {
-                endDate: { gte: startDate},
-                startDate: { lte: startDate},
+                endDate: { gte: startDate },
+                startDate: { lte: startDate },
               },
               {
                 startDate: { lte: endDate },
                 endDate: { gte: endDate },
-              }
-            ]
-          }
-        }
-      }
+              },
+            ],
+          },
+        },
+      };
     }
 
     const listings = await prisma.listing.findMany({
@@ -83,7 +84,11 @@ export default async function getListings(params: IListingsParams) {
     });
 
     return listings;
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error("Une erreur inconnue est survenue");
+    }
   }
 }

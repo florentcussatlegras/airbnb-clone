@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     price,
   } = body;
 
-  Object.keys(body).forEach((value: any) => {
+  Object.keys(body).forEach((value) => {
     if (!body[value]) {
       NextResponse.error();
     }

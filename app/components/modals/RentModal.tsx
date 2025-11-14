@@ -69,7 +69,18 @@ export const RentModal = () => {
     [location]
   );
 
-  const setCustomValue = (id: string, value: any) => {
+  // const setCustomValue = (id: string, value: any) => {
+  //   setValue(id, value, {
+  //     shouldValidate: true,
+  //     shouldDirty: true,
+  //     shouldTouch: true,
+  //   });
+  // };
+
+  const setCustomValue = <T extends keyof FieldValues>(
+    id: T,
+    value: FieldValues[T]
+  ) => {
     setValue(id, value, {
       shouldValidate: true,
       shouldDirty: true,
@@ -92,22 +103,22 @@ export const RentModal = () => {
 
     setIsLoading(true);
 
-    axios.post('api/listings', data)
+    axios
+      .post("api/listings", data)
       .then(() => {
-        toast.success('Listing Created');
+        toast.success("Listing Created");
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error('Something went wrong.');
-      }).finally(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-
-    
-  }
+  };
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {

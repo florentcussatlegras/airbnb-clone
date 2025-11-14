@@ -1,5 +1,5 @@
 function TrieNode(letter) {
-  // properties 
+  // properties
   this.letter = letter;
   this.prevLetter = null;
   this.nextLetters = {}; // an object for the following letters
@@ -10,14 +10,24 @@ function TrieNode(letter) {
 
   // iterates through nodes to get word prediction
   function getWord() {
-    var node = this;
-    var wordLetters = [];
+    // var node = this;
+    // var wordLetters = [];
+    // while (node.prevLetter) {
+    //   wordLetters.unshift(node.letter);
+    //   node = node.prevLetter; // set the previous letter as node
+    // }
+    // return wordLetters.join("");
+
+    const wordLetters = [];
+    let node = this;
+
     while (node.prevLetter) {
       wordLetters.unshift(node.letter);
-      node = node.prevLetter; // set the previous letter as node
+      node = node.prevLetter;
     }
+
     return wordLetters.join("");
-  };
+  }
 }
 
 function Trie() {
@@ -34,7 +44,8 @@ function Trie() {
     var node = this.root; // set first node to root node
     for (let i = 0; i < word.length; i++) {
       const current_letter = word[i];
-      if (!node.nextLetters[current_letter]) { // if letter not in next letters
+      if (!node.nextLetters[current_letter]) {
+        // if letter not in next letters
         node.nextLetters[current_letter] = new TrieNode(current_letter); // make it node
         node.nextLetters[current_letter].prevLetter = node; // add it as a child node
       }
@@ -45,7 +56,7 @@ function Trie() {
         node.isComplete = true;
       }
     }
-  };
+  }
 
   // check if word exists
   function contains(word) {
@@ -53,14 +64,15 @@ function Trie() {
     for (let i = 0; i < word.length; i++) {
       const current_letter = word[i];
       let next_node = node.nextLetters[current_letter];
-      if (next_node) { // if letter is one of next letters
+      if (next_node) {
+        // if letter is one of next letters
         node = next_node; // set it as a next node
       } else {
         return false;
       }
     }
     return node.isComplete; // definitely returns 'true'
-  };
+  }
 
   // find words with similar previous letters
   function find(clue_letters) {
@@ -69,7 +81,8 @@ function Trie() {
     for (let i = 0; i < clue_letters.length; i++) {
       const clue_letter = clue_letters[i];
       let next_node = node.nextLetters[clue_letter];
-      if (next_node) { // if clue letter is one of next letters
+      if (next_node) {
+        // if clue letter is one of next letters
         node = next_node; // set it as next node
       } else {
         return output;
@@ -79,11 +92,12 @@ function Trie() {
     // use the last node to find the next possible words
     findAllWords(node, output);
     return output;
-  };
+  }
 
   // function that finds next possible words
   function findAllWords(node, arr) {
-    if (node.isComplete) { // check if node is end node
+    if (node.isComplete) {
+      // check if node is end node
       arr.unshift(node.getWord()); // get all words and add them to array
     }
 

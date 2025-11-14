@@ -6,7 +6,7 @@ import Select from "react-select";
 export type CountrySelectValue = {
   flag: string;
   label: string;
-  latlng: string;
+  latlng: [number, number];
   region: string;
   value: string;
 };
@@ -27,7 +27,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
         options={getAll()}
         value={value}
         onChange={(value) => onChange(value as CountrySelectValue)}
-        formatOptionLabel={(option: any) => (
+        formatOptionLabel={(option) => (
           <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
             <div>
