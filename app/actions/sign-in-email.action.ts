@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { APIError } from "better-auth/api";
 import { redirect } from "next/navigation";
 
-async function signInEmailAction(formData) {
+async function signInEmailAction(formData: any) {
 
     const email = String(formData.email);
     if (!email) {
