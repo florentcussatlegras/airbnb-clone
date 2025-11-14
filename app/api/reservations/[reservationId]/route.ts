@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import getCurrentUser from "../../../actions/getCurrentUser";
 import prisma from "../../../lib/prisma";
@@ -8,8 +8,8 @@ interface IParams {
 }
 
 export async function DELETE(
-    request: Request,
-    { params }: { params: IParams }
+    request: NextRequest,
+    context: { params: Promise<IParams> }
 ) {
     const currentUser = await getCurrentUser();
 
@@ -17,7 +17,7 @@ export async function DELETE(
         return NextResponse.error();
     }
 
-    const { reservationId } = await params;
+    const { reservationId } = await context.params;
 
     if (!reservationId || typeof reservationId !== 'string') {
         throw new Error('Invalid ID');
