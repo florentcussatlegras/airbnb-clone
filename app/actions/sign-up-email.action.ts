@@ -10,7 +10,7 @@ import { APIError } from "better-auth/api";
 //     password: z.string().min(16),
 // });
 
-async function signUpEmailAction(formData) {
+async function signUpEmailAction(formData: FormData) {
   console.log(formData);
   // const getPasswordError = (value) => {
   //     if (value.length == 0) {
@@ -43,12 +43,12 @@ async function signUpEmailAction(formData) {
   //     return { error: "Veuillez saisir votre prénom" };
   // }
 
-  const name = String(formData.name);
+  const name = String(formData.get("name") || "");
   if (!name) {
     return { error: "Veuillez saisir votre nom" };
   }
 
-  const email = String(formData.email);
+  const email = String(formData.get("name") || "");
   if (!email) {
     return { error: "Veuillez saisir votre adresse email" };
   }
@@ -56,7 +56,7 @@ async function signUpEmailAction(formData) {
     return { error: "Veuillez saisir une adresse email valide" };
   }
 
-  const password = String(formData.password);
+  const password = String(formData.get("password") || "");
   if (!password) {
     return { error: "Please enter your password" };
   }
