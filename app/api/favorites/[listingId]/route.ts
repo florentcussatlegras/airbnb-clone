@@ -8,7 +8,7 @@ interface IParams {
 }
 
 export async function POST(
-    request: Request,
+    request: NextRequest,
     // { params }: { params: IParams }
     context: { params: Promise<IParams> }
  ) {
@@ -41,8 +41,8 @@ export async function POST(
 }
 
 export async function DELETE(
-    request: Request,
-    { params }: { params: IParams }
+    request: NextRequest,
+    context: { params: Promise<IParams> }
 ) {
     const currentUser = await getCurrentUser();
 
@@ -50,7 +50,7 @@ export async function DELETE(
         return NextResponse.error();
     }
 
-    const { listingId } = await params;
+    const { listingId } = await context.params;
 
     if (!listingId || typeof listingId !== 'string') {
         throw new Error('Invalid ID');
