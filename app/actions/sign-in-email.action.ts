@@ -5,14 +5,15 @@ import { headers } from "next/headers";
 import { APIError } from "better-auth/api";
 import { redirect } from "next/navigation";
 
-async function signInEmailAction(formData: FormData) {
 
-    const email = String(formData.get("email") || "");
+async function signInEmailAction(formData: any) {
+
+    const email = String(formData.email || "");
     if (!email) {
         return { error: "Please enter your email" };
     }
 
-    const password = String(formData.get("password") || "");
+    const password = String(formData.password || "");
     if (!password) {
         return { error: "Please enter your password" };
     }

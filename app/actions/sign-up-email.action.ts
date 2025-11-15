@@ -10,7 +10,7 @@ import { APIError } from "better-auth/api";
 //     password: z.string().min(16),
 // });
 
-async function signUpEmailAction(formData: FormData) {
+async function signUpEmailAction(formData: any) {
   console.log(formData);
   // const getPasswordError = (value) => {
   //     if (value.length == 0) {
