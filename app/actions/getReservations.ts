@@ -31,7 +31,9 @@ export type ReservationWithListing = {
   };
 };
 
-export default async function getReservations(params: IParams): Promise<ReservationWithListing[]> {
+export default async function getReservations(
+  params: IParams
+): Promise<ReservationWithListing[]> {
   try {
     const { listingId, userId, authorId } = await params;
 
@@ -49,10 +51,42 @@ export default async function getReservations(params: IParams): Promise<Reservat
       query.listing = { userId: authorId };
     }
 
+    // const reservations = await prisma.reservation.findMany({
+    //   where: query,
+    //   include: {
+    //     listing: true,
+    //   },
+    //   orderBy: {
+    //     createdAt: "desc",
+    //   },
+    // });
+
     const reservations = await prisma.reservation.findMany({
       where: query,
-      include: {
-        listing: true,
+      select: {
+        id: true,
+        createdAt: true,
+        userId: true,
+        listingId: true,
+        startDate: true,
+        endDate: true,
+        totalPrice: true,
+        listing: {
+          select: {
+            id: true,
+            createdAt: true,
+            userId: true,
+            title: true,
+            description: true,
+            imageSrc: true,
+            category: true,
+            roomCount: true,
+            bathroomCount: true,
+            guestCount: true,
+            locationValue: true,
+            price: true,
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
