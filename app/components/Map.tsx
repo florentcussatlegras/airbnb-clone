@@ -1,12 +1,25 @@
 "use client";
 
 import L from "leaflet";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { useEffect } from "react";
+
+function RecenterMap({ center }: { center: L.LatLngExpression }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (center) {
+      map.setView(center);
+    }
+  }, [center, map]);
+
+  return null;
+}
 
 const customMarker = L.icon({
   iconUrl: "/marker-icon.png",
@@ -33,7 +46,7 @@ export default function Map({ center }: MapProps) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution="&copy; OpenStreetMap contributors"
       />
-
+      {center && <RecenterMap center={center as L.LatLngExpression} />}
       {center && <Marker position={center as L.LatLngExpression} icon={customMarker} />}
     </MapContainer>
   );
