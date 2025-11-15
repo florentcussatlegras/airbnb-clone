@@ -25,6 +25,7 @@ export default async function getListings(params: IListingsParams) {
       category,
     } = await params;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const query: Record<string, any> = {};
 
     if (userId) {
