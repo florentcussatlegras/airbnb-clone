@@ -25,7 +25,8 @@ export default async function getListings(params: IListingsParams) {
       category,
     } = await params;
 
-    const query: Prisma.ListingWhereInput = {};
+    // const query: Prisma.ListingWhereInput = {};
+    let query: Prisma.ListingFindManyArgs["where"] = {};
 
     if (userId) {
       query.userId = userId;
