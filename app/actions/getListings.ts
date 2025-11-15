@@ -12,7 +12,7 @@ export interface IListingsParams {
   category?: string;
 }
 
-export default async function getListings(params: IListingsParams) {
+export default async function getListings(params: any) {
   try {
     const {
       userId,
@@ -26,7 +26,7 @@ export default async function getListings(params: IListingsParams) {
     } = await params;
 
     // const query: Prisma.ListingWhereInput = {};
-    const query: Prisma.ListingFindManyArgs["where"] = {};
+    const query: any = {};
 
     if (userId) {
       query.userId = userId;
