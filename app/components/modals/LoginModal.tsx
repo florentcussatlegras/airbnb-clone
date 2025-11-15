@@ -17,11 +17,6 @@ import signInEmailAction from "@/app/actions/sign-in-email.action";
 import { SignInOauthButton } from "../buttons/sign-in-oauth-button";
 import { RegisterModal } from "./RegisterModal";
 
-type LoginFormData = {
-  email: string;
-  password: string;
-};
-
 export const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();

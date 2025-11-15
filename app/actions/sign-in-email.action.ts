@@ -4,9 +4,10 @@ import { auth, ErrorCode } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { APIError } from "better-auth/api";
 import { redirect } from "next/navigation";
+import { FieldValues } from "react-hook-form";
 
 
-async function signInEmailAction(formData: any) {
+async function signInEmailAction(formData: FieldValues) {
 
     const email = String(formData.email || "");
     if (!email) {
