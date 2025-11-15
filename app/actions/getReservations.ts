@@ -37,7 +37,8 @@ export default async function getReservations(
   try {
     const { listingId, userId, authorId } = await params;
 
-    const query: Prisma.ReservationWhereInput = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const query: Record<string, any> = {};
 
     if (listingId) {
       query.listingId = listingId;
