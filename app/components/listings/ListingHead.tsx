@@ -1,7 +1,7 @@
 "use client";
 
-import useCountries from "@/app/hooks/useCountries";
-import { User } from "@/generated/prisma";
+import useCountries from "@/app/hooks/useCountries";;
+import { User } from "@/types/prisma";
 import { Heading } from "../Heading";
 import HeartButton from "../HeartButton";
 import Image from "next/image";

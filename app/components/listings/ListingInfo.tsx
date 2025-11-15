@@ -2,7 +2,6 @@
 
 import useCountries from "@/app/hooks/useCountries";
 
-import { User } from "@/generated/prisma";
 import { IconType } from "react-icons";
 
 import { Avatar } from "../Avatar";
