@@ -4,7 +4,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { Prisma } from "@prisma/client";
 import useFavorite from '../hooks/useFavorite';
 
-type User = Prisma.UserGetPayload<{}>;
+type User = Prisma.UserGetPayload<true>;
 
 interface HeartButtonProps {
   listingId: string;
