@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { toast } from "react-hot-toast";
 
-import { User } from "@/generated/prisma";
+import { User } from "@/types/prisma";
 
 import useLoginModal from "./useLoginModal";
 
