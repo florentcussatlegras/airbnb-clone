@@ -9,7 +9,7 @@ import useRegisterModal from "../../hooks/useRegisterModal";
 import useLoginModal from "../../hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
 
-import { User } from "@/generated/prisma";
+import { User } from "@/types/prisma";
 import { authClient } from "@/app/lib/auth-client";
 import { useRouter } from "next/navigation";
 import useSearchModal from "@/app/hooks/useSearch";

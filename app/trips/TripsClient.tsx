@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { Reservation, User } from "@/generated/prisma";
+import { User } from "@/types/prisma";
 import { Container } from "../components/Container";
 import { Heading } from "../components/Heading";
 import { useCallback, useState } from "react";

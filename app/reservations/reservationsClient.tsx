@@ -5,7 +5,7 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Reservation, User } from "@/generated/prisma";
+import { User } from "@/types/prisma";
 
 import { Heading } from "../components/Heading";
 import { Container } from "../components/Container";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Listing, User } from "@/generated/prisma";
+import { Listing, User } from "@/types/prisma";
 
 import { Heading } from "../components/Heading";
 import { Container } from "../components/Container";
