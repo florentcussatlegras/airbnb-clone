@@ -7,7 +7,7 @@ import { admin, customSession } from "better-auth/plugins";
 import { hashPassword, verifyPassword } from "@/app/lib/argon2";
 import prisma from "../lib/prisma";
 import { getValidDomains, normalizeName } from "./utils";
-import { UserRole } from "@/generated/prisma";
+import { UserRole } from "@prisma/client";
 import { ac, roles } from "@/app/lib/permissions";
 import { sendEmailAction } from "../actions/send-email.action";
 
