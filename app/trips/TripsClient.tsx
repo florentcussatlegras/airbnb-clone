@@ -10,8 +10,32 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { ListingCard } from "../components/listings/ListingCard";
 
+type ReservationWithListing = {
+  id: string;
+  createdAt: Date;
+  userId: string;
+  listingId: string;
+  startDate: Date;
+  endDate: Date;
+  totalPrice: number;
+  listing: {
+    id: string;
+    createdAt: Date;
+    userId: string;
+    title: string;
+    description: string;
+    imageSrc: string;
+    category: string;
+    roomCount: number;
+    bathroomCount: number;
+    guestCount: number;
+    locationValue: string;
+    price: number;
+  };
+};
+
 interface TripsClientProps {
-  reservations: Reservation[];
+  reservations: ReservationWithListing[];
   currentUser?: User | null;
 }
 
