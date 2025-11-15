@@ -13,6 +13,25 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Range } from "react-date-range";
 import toast from "react-hot-toast";
+import { Prisma } from "@prisma/client";
+
+export type ListingWithUser = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  category: string;
+  locationValue: string;
+  price: number;
+  roomCount: number;
+  bathroomCount: number;
+  guestCount: number;
+  user: {
+    id: string;
+    name: string | null;
+    image: string | null;
+  } | null;
+};
 
 const initialDateRange = {
   startDate: new Date(),
@@ -22,7 +41,7 @@ const initialDateRange = {
 
 interface ListingClientProps {
   reservations?: Reservation[];
-  listing: Listing;
+  listing: ListingWithUser;
   currentUser?: User | null;
 }
 
