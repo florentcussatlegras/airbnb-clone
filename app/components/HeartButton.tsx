@@ -1,7 +1,7 @@
 "use client";
 
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { User } from "@/generated/prisma";
+import type { User } from "@/types/prisma";
 import useFavorite from '../hooks/useFavorite';
 
 
