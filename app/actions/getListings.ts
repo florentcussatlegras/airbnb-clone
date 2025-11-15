@@ -25,8 +25,8 @@ export default async function getListings(params: IListingsParams) {
       category,
     } = await params;
 
-    // @ts-ignore
-    const query: Prisma.ListingWhereInput = {};
+    /// eslint-disable-next-line @typescript-eslint/ban-types
+    const query: any = {};
 
     if (userId) {
       query.userId = userId;
