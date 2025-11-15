@@ -7,7 +7,31 @@ interface IParams {
   authorId?: string;
 }
 
-export default async function getReservations(params: IParams) {
+export type ReservationWithListing = {
+  id: string;
+  createdAt: Date;
+  userId: string;
+  listingId: string;
+  startDate: Date;
+  endDate: Date;
+  totalPrice: number;
+  listing: {
+    id: string;
+    createdAt: Date;
+    userId: string;
+    title: string;
+    description: string;
+    imageSrc: string;
+    category: string;
+    roomCount: number;
+    bathroomCount: number;
+    guestCount: number;
+    locationValue: string;
+    price: number;
+  };
+};
+
+export default async function getReservations(params: IParams): Promise<ReservationWithListing[]> {
   try {
     const { listingId, userId, authorId } = await params;
 
