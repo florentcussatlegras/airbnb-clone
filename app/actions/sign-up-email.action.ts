@@ -6,6 +6,8 @@ import { APIError } from "better-auth/api";
 
 async function signUpEmailAction(formData: FormData) {
   
+  console.log('sign up email action frére');
+  
   const name = formData.get("name")?.toString() || "";
   const email = formData.get("email")?.toString() || "";
   const password = formData.get("password")?.toString() || "";
