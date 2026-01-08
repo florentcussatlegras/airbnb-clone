@@ -9,12 +9,13 @@ import { FieldValues } from "react-hook-form";
 
 async function signInEmailAction(formData: FieldValues) {
 
-    const email = String(formData.email || "");
+    const email = formData.get("email")?.toString() || "";
+    const password = formData.get("password")?.toString() || "";
+
     if (!email) {
         return { error: "Please enter your email" };
     }
 
-    const password = String(formData.password || "");
     if (!password) {
         return { error: "Please enter your password" };
     }
