@@ -57,7 +57,6 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   }
 
   async function onSignOut() {
-
     await authClient.signOut({
       fetchOptions: {
         credentials: "include",
@@ -77,7 +76,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           onClick={onRent}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
-          Airbnb your home
+          Airbnb votre bien
         </div>
         <div
           onClick={toggleOpen}
@@ -95,18 +94,33 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => router.push('/trips')} label="My trips" />
-                <MenuItem onClick={() => router.push('/favorites')} label="My favorites" />
-                <MenuItem onClick={() => router.push('/reservations')} label="My reservations" />
-                <MenuItem onClick={() => router.push('/properties')} label="My properties" />
+                <MenuItem
+                  onClick={() => router.push("/trips")}
+                  label="Mes voyages"
+                />
+                <MenuItem
+                  onClick={() => router.push("/favorites")}
+                  label="Mes favoris"
+                />
+                <MenuItem
+                  onClick={() => router.push("/reservations")}
+                  label="Mes réservations"
+                />
+                <MenuItem
+                  onClick={() => router.push("/properties")}
+                  label="Mes propriétés"
+                />
                 <MenuItem onClick={onOpenRentModal} label="Airbnb my home" />
                 <hr />
-                <MenuItem onClick={onSignOut} label="Logout" />
+                <MenuItem onClick={onSignOut} label="Se déconnecter" />
               </>
             ) : (
               <>
                 <MenuItem onClick={onOpenLoginModal} label="Login" />
-                <MenuItem onClick={onOpenRegisterModal} label="Sign up" />
+                <MenuItem
+                  onClick={onOpenRegisterModal}
+                  label="Inscrivez-vous"
+                />
               </>
             )}
           </div>
