@@ -1,12 +1,10 @@
 "use server";
 
 import { auth, ErrorCode } from "@/app/lib/auth";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { APIError } from "better-auth/api";
+import { FieldValues } from "react-hook-form";
 
-async function signUpEmailAction(formData: FormData) {
-  
-  console.log('sign up email action frére');
+async function signUpEmailAction(formData: FieldValues) {
   
   const name = formData.get("name")?.toString() || "";
   const email = formData.get("email")?.toString() || "";
@@ -19,7 +17,7 @@ async function signUpEmailAction(formData: FormData) {
   if (!email) {
     return { error: "Veuillez saisir votre adresse email" };
   }
-
+  
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) == false) {
     return { error: "Veuillez saisir une adresse email valide" };
   }
