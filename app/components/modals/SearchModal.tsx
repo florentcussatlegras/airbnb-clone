@@ -147,7 +147,7 @@ const SearchModal = () => {
    if (step === STEPS.DATE) {
       bodyContent = (
          <div className="flex flex-col gap-8">
-            <Heading title="Quand envisagez-vous de partir?" subtitle="Assurez que tout soit libre!" />
+            <Heading title="Quand envisagez-vous de partir?" subtitle="Assurez-vous que tout soit libre!" />
             <Calendar onChange={(value) => setDateRange(value.selection)} value={dateRange} />
          </div>
       );
@@ -156,19 +156,19 @@ const SearchModal = () => {
    if (step === STEPS.INFO) {
       bodyContent = (
          <div className="flex flex-col gap-8">
-            <Heading title="More information" subtitle="Find your perfect place!" />
+            <Heading title="Plus d'informations" subtitle="Trouvez votre location parfaite!" />
             <Counter
                onChange={(value) => setGuestCount(value)}
                value={guestCount}
-               title="Guests"
-               subtitle="How many guests are coming?"
+               title="Invités"
+               subtitle="Combien d'invités viennent?"
             />
             <hr />
             <Counter
                onChange={(value) => setRoomCount(value)}
                value={roomCount}
-               title="Rooms"
-               subtitle="How many rooms do you need?"
+               title="Chambres"
+               subtitle="Combien de chambres souhaitez-vous?"
             />
             <hr />
             <Counter
@@ -176,8 +176,8 @@ const SearchModal = () => {
                   setBathroomCount(value);
                }}
                value={bathroomCount}
-               title="Bathrooms"
-               subtitle="How many bahtrooms do you need?"
+               title="Salle de bains"
+               subtitle="Combien de salle de bains souhaitez-vous?"
             />
          </div>
       );
