@@ -186,7 +186,7 @@ const SearchModal = () => {
    return (
       <Modal
          isOpen={searchModal.isOpen}
-         title="Filters"
+         title="Filtres"
          actionLabel={actionLabel}
          onSubmit={onSubmit}
          secondaryActionLabel={secondaryActionLabel}
