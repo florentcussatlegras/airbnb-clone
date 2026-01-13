@@ -13,47 +13,47 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 export const categories = [
   {
-    label: "Beach",
+    label: "Plage",
     icon: TbBeach,
     description: "This property is close to the beach!",
   },
   {
-    label: "Windmills",
+    label: "Moulins",
     icon: GiWindmill,
     description: "This property has windmills!",
   },
   {
-    label: "Modern",
+    label: "Moderne",
     icon: MdOutlineVilla,
     description: "This property is modern!",
   },
   {
-    label: "CountrySide",
+    label: "Campagne",
     icon: TbMountain,
     description: "This property is in the countryside!",
   },
   {
-    label: "Pools",
+    label: "Piscine",
     icon: TbPool,
     description: "This property has a pool!",
   },
   {
-    label: "Islands",
+    label: "Iles",
     icon: GiIsland,
     description: "This property is on an island!",
   },
   {
-    label: "Lake",
+    label: "Lac",
     icon: GiBoatFishing,
     description: "This property is close to a lake!",
   },
   {
-    label: "Skiing",
+    label: "Ski",
     icon: FaSkiing,
     description: "This property has skiing activities!",
   },
   {
-    label: "Castles",
+    label: "Château",
     icon: GiCastle,
     description: "This property is in a castel!",
   },
@@ -63,30 +63,30 @@ export const categories = [
     description: "This property has camping activities!",
   },
   {
-    label: "Arctic",
+    label: "Arctique",
     icon: BsSnow,
     description: "This property has snow activities!",
   },
-  {
-    label: "Cave",
-    icon: GiCaveEntrance,
-    description: "This property is in a cave!",
-  },
-  {
-    label: "Desert",
-    icon: GiCactus,
-    description: "This property is in the desert!",
-  },
-  {
-    label: "Barns",
-    icon: GiBarn,
-    description: "This property is in the barn!",
-  },
-  {
-    label: "Lux",
-    icon: IoDiamond,
-    description: "This property is luxurious!",
-  },
+  // {
+  //   label: "Cave",
+  //   icon: GiCaveEntrance,
+  //   description: "This property is in a cave!",
+  // },
+  // {
+  //   label: "Desert",
+  //   icon: GiCactus,
+  //   description: "This property is in the desert!",
+  // },
+  // {
+  //   label: "Barns",
+  //   icon: GiBarn,
+  //   description: "This property is in the barn!",
+  // },
+  // {
+  //   label: "Lux",
+  //   icon: IoDiamond,
+  //   description: "This property is luxurious!",
+  // },
 ];
 
 export const Categories = () => {

@@ -14,7 +14,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "issolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
@@ -38,7 +38,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "prisma/seed-listing.ts"  ],
   "exclude": [
     "node_modules"
   ]
