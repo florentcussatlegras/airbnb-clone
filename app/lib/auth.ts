@@ -141,6 +141,9 @@ const options = {
 
 export const auth = betterAuth({
   ...options,
+  cookies: {
+    sameSite: "lax",
+  },
   plugins: [
     ...(options.plugins ?? []),
     customSession(async ({ user, session }) => {

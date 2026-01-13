@@ -51,7 +51,7 @@ export const LoginModal = () => {
     } else {
       toast.success("Welcome, happy to see you again");
       loginModal.onClose();
-      router.push("/profile");
+      router.push("/");
       router.refresh();
     }
   }

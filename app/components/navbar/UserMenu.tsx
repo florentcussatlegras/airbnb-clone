@@ -56,9 +56,16 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     registerModal.onOpen();
   }
 
+  fetch("/api/auth/sign-out", {
+    method: "POST",
+    credentials: "include",
+  });
+
   async function onSignOut() {
+
     await authClient.signOut({
       fetchOptions: {
+        credentials: "include",
         onSuccess: () => {
           setIsOpen(false);
           router.push("/");
