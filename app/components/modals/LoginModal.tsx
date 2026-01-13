@@ -37,7 +37,13 @@ export const LoginModal = () => {
   async function onSubmit(data: FieldValues): Promise<void> {
     setIsLoading(true);
 
-    const { error } = await signInEmailAction(data);
+    const formData = new FormData();
+
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    const { error } = await signInEmailAction(formData);
 
     if (error) {
       toast.error(error);

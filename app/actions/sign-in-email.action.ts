@@ -4,10 +4,8 @@ import { auth, ErrorCode } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { APIError } from "better-auth/api";
 import { redirect } from "next/navigation";
-import { FieldValues } from "react-hook-form";
 
-
-async function signInEmailAction(formData: FieldValues) {
+async function signInEmailAction(formData: FormData) {
 
     const email = formData.get("email")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
@@ -31,7 +29,6 @@ async function signInEmailAction(formData: FieldValues) {
 
         return { error: null }
     }catch (err) {
-        console.log(err);
         if (err instanceof APIError) {
             const errCode = err.body ? (err.body.code as ErrorCode) : "UNKNOWN";
 
