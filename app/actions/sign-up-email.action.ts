@@ -4,7 +4,7 @@ import { auth, ErrorCode } from "@/app/lib/auth";
 import { APIError } from "better-auth/api";
 import { FieldValues } from "react-hook-form";
 
-async function signUpEmailAction(formData: FieldValues) {
+async function signUpEmailAction(formData: FormData) {
   
   const name = formData.get("name")?.toString() || "";
   const email = formData.get("email")?.toString() || "";
