@@ -141,8 +141,13 @@ const options = {
 
 export const auth = betterAuth({
   ...options,
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://airbnb-clone-git-main-florent-cussatlegras-projects.vercel.app",
+  ],
   cookies: {
     sameSite: "lax",
+    secure: true,
   },
   plugins: [
     ...(options.plugins ?? []),
