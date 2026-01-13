@@ -37,19 +37,13 @@ export const RegisterModal = () => {
   async function onSubmit(data: FieldValues): Promise<void> {
     setIsLoading(true);
 
-    // axios
-    //   .post("/api/register", data)
-    //   .then(() => {
-    //     registerModal.onClose();
-    //   })
-    //   .catch((error) => {
-    //     toast.error("Something went wrong");
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
+    const formData = new FormData();
 
-    const { error } = await signUpEmailAction(data);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
+    const { error } = await signUpEmailAction(formData);
 
     if (error) {
       toast.error(error);
