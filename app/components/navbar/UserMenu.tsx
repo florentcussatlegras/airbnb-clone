@@ -116,7 +116,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               </>
             ) : (
               <>
-                <MenuItem onClick={onOpenLoginModal} label="Login" />
+                <MenuItem onClick={onOpenLoginModal} label="Identifiez-vous" />
                 <MenuItem
                   onClick={onOpenRegisterModal}
                   label="Inscrivez-vous"

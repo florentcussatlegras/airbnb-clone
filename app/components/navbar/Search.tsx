@@ -22,7 +22,7 @@ export const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Où?';
+    return 'Où ?';
   }, [getByValue, locationValue]);
 
   const durationLabel = useMemo(() => {
@@ -39,7 +39,7 @@ export const Search = () => {
       return `${diff} jours`;
     }
 
-    return 'Quand?';
+    return 'Quand ?';
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
