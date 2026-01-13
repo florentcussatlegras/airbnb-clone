@@ -106,14 +106,14 @@ export const RentModal = () => {
     axios
       .post("api/listings", data)
       .then(() => {
-        toast.success("Listing Created");
+        toast.success("L'annonce a bien été créée.");
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
       .catch(() => {
-        toast.error("Something went wrong.");
+        toast.error("Une erreur s'est produite.");
       })
       .finally(() => {
         setIsLoading(false);
@@ -122,10 +122,10 @@ export const RentModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return "Create";
+      return "Créer";
     }
 
-    return "Next";
+    return "Suivant";
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -133,14 +133,14 @@ export const RentModal = () => {
       return "undefined";
     }
 
-    return "Back";
+    return "Retour";
   }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Wich of these best describes your place?"
-        subtitle="Pick a category"
+        title="Quelle option décrit le mieux votre logement?"
+        subtitle="Choisissez une catégorie"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto">
         {categories.map((item) => (
@@ -161,8 +161,8 @@ export const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located"
-          subtitle="Help guests find you!"
+          title="Où se situe votre logement"
+          subtitle="Aidez les invités à vous trouver!"
         />
         <CountrySelect
           value={location}
@@ -177,26 +177,26 @@ export const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some basics about your place"
-          subtitle="What amenities do you have?"
+          title="Présentez rapidement votre logement"
+          subtitle="Combien d'équipements avez-vous?"
         />
         <Counter
-          title="Guests"
-          subtitle="How many guests do you allow?"
+          title="Invités"
+          subtitle="Combien d'invités pouvez-vous recevoir?"
           value={guestCount}
           onChange={(value) => setCustomValue("guestCount", value)}
         />
         <hr />
         <Counter
-          title="Rooms"
-          subtitle="How many rooms do you have?"
+          title="Chambres"
+          subtitle="Combien de chambres avez-vous?"
           value={roomCount}
           onChange={(value) => setCustomValue("roomCount", value)}
         />
         <hr />
         <Counter
-          title="Guests"
-          subtitle="How many bathrooms do you have?"
+          title="Invités"
+          subtitle="Combien de salle de bains avez-vous?"
           value={bathroomCount}
           onChange={(value) => setCustomValue("bathroomCount", value)}
         />
@@ -209,8 +209,8 @@ export const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
+          title="Ajouter une photo de votre logement"
+          subtitle="Montrez à vos invités à quoi ressemble votre logement!"
         />
         <ImageUpload
           onChange={(value) => setCustomValue("imageSrc", value)}
@@ -224,12 +224,12 @@ export const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet works best!"
+          title="Comment décririez-vous votre logement?"
+          subtitle="Des mots courts et simples sont plus efficaces!"
         />
         <Input
           id="title"
-          label="Title"
+          label="Titre"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -252,12 +252,12 @@ export const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Now, set your price"
-          subtitle="How much do you charge per night"
+          title="Maintenant, fixez votre prix"
+          subtitle="Combien facturez-vous la nuit ?"
         />
         <Input
           id="price"
-          label="Price"
+          label="Prix"
           formatPrice
           type="number"
           disabled={isLoading}

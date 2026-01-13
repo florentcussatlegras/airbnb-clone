@@ -118,10 +118,10 @@ const SearchModal = () => {
 
    const actionLabel = useMemo(() => {
       if (step === STEPS.INFO) {
-         return "Search";
+         return "Cherchez";
       }
 
-      return "Next";
+      return "Suivant";
    }, [step]);
 
    const secondaryActionLabel = useMemo(() => {
@@ -129,12 +129,12 @@ const SearchModal = () => {
          return undefined;
       }
 
-      return "Back";
+      return "Retour";
    }, [step]);
 
    let bodyContent = (
       <div className="flex flex-col gap-8">
-         <Heading title="Where do you wanna go?" subtitle="Find the perfect location!" />
+         <Heading title="Où souhaitez-vous aller?" subtitle="Trouver la location parfaite!" />
          <CountrySelect
             value={location}
             onChange={(value) => setLocation(value as CountrySelectValue)}
@@ -147,7 +147,7 @@ const SearchModal = () => {
    if (step === STEPS.DATE) {
       bodyContent = (
          <div className="flex flex-col gap-8">
-            <Heading title="When do you plan to go?" subtitle="Make sure everyone is free!" />
+            <Heading title="Quand envisagez-vous de partir?" subtitle="Assurez que tout soit libre!" />
             <Calendar onChange={(value) => setDateRange(value.selection)} value={dateRange} />
          </div>
       );

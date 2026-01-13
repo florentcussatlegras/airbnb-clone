@@ -49,7 +49,7 @@ export const RegisterModal = () => {
       toast.error(error);
       setIsLoading(false);
     } else {
-      toast.success("Register successed, please check you email");
+      toast.success("Enregistrement réussi, veuillez vérifier vos emails");
       registerModal.onClose();
       loginModal.onOpen();
       router.push("/");
@@ -64,7 +64,7 @@ export const RegisterModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Heading title="Bienvenue chez Airbnb" subtitle="Créer un compte!" />
       <Input
         id="email"
         label="Email"
@@ -75,7 +75,7 @@ export const RegisterModal = () => {
       />
       <Input
         id="name"
-        label="Name"
+        label="Nom"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -84,7 +84,7 @@ export const RegisterModal = () => {
       <Input
         id="password"
         type="password"
-        label="Password"
+        label="Mot de passe"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -112,7 +112,7 @@ export const RegisterModal = () => {
       <SignInOauthButton provider="github" />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>Vous avez déja un comptet?</div>
           <div
             onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
@@ -128,7 +128,7 @@ export const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
+      title="Enregistrez-vous"
       actionLabel="Continue"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
