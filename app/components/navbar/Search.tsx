@@ -22,7 +22,7 @@ export const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'Où?';
   }, [getByValue, locationValue]);
 
   const durationLabel = useMemo(() => {
@@ -36,18 +36,18 @@ export const Search = () => {
         diff = 1;
       }
 
-      return `${diff} Days`;
+      return `${diff} jours`;
     }
 
-    return 'Any week';
+    return 'Quand?';
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
-      return `${guestCount} Guests`;
+      return `${guestCount} invités`;
     }
 
-    return 'Add Guests';
+    return 'Ajouter des invités';
   }, [guestCount]);
 
   return (
