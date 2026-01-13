@@ -63,7 +63,7 @@ export const LoginModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome back" subtitle="Log to your account!" />
+      <Heading title="Heureux de vous revoir" subtitle="Connectez-vous à votre compte!" />
       <Input
         id="email"
         label="Email"
@@ -75,7 +75,7 @@ export const LoginModal = () => {
       <Input
         id="password"
         type="password"
-        label="Password"
+        label="Mot de passe"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -103,12 +103,12 @@ export const LoginModal = () => {
       <SignInOauthButton provider="github" />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>First time using Airbnb?</div>
+          <div>Première utilisation d' Airbnb?</div>
           <div
             onClick={toggle}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Create an account
+            Créer un compte
           </div>
         </div>
       </div>
