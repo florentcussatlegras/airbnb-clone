@@ -128,15 +128,15 @@ const options = {
       trustedProviders: ["google", "github"]
     },
   },
-  plugins: [
-    nextCookies(),
-    admin({
-      defaultRole: UserRole.USER,
-      adminRoles: [UserRole.ADMIN],
-      ac,
-      roles,
-    }),
-  ],
+  // plugins: [
+  //   nextCookies(),
+  //   admin({
+  //     defaultRole: UserRole.USER,
+  //     adminRoles: [UserRole.ADMIN],
+  //     ac,
+  //     roles,
+  //   }),
+  // ],
 } satisfies BetterAuthOptions;
 
 export const auth = betterAuth({
