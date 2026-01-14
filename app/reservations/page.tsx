@@ -24,8 +24,8 @@ const ReservationsPage = async () => {
     return (
       <ClientOnly>
         <EmptyState
-          title="No reservations found"
-          subtitle="Looks like you have no reservations on your properties"
+          title="Aucune réservations trouvées"
+          subtitle="Il semble que vous n'avez aucune réservation de logement."
         />
       </ClientOnly>
     );
