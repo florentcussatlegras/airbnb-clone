@@ -110,7 +110,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => router.push("/properties")}
                   label="Mes propriétés"
                 />
-                <MenuItem onClick={onOpenRentModal} label="Airbnb my home" />
+                <MenuItem onClick={onOpenRentModal} label="Airbnb mon logement" />
                 <hr />
                 <MenuItem onClick={onSignOut} label="Se déconnecter" />
               </>
