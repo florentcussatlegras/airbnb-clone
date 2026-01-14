@@ -13,7 +13,7 @@ const ListingCategory:React.FC<ListingCategoryProps> = ({
     label,
     description
 }) => {
-  return (<div className="flex flex-col gap-6">
+  return (
     <div className="flex flex-row items-center gap-4">
         <Icon size={40} className="text-neutral-600" />
         <div className="flex flex-col">
@@ -25,7 +25,7 @@ const ListingCategory:React.FC<ListingCategoryProps> = ({
             </div> */}
         </div>
     </div>
-  </div>);
+  );
 };
 
 export default ListingCategory;
