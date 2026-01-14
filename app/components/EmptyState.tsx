@@ -24,7 +24,7 @@ export const EmptyState: React.FC<EmptyState> = ({
         {showReset && (
           <Button
             outline
-            label="Supprimer tous les filtres"
+            label="Supprimer les filtres"
             onClick={() => router.push("/")}
           />
         )}
