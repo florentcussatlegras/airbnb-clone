@@ -33,18 +33,21 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
 
     try {
         let request;
+        let message;
 
         if (hasFavorited) {
-            request = () => axios.delete(`/api/favorites/${listingId}`)
+            request = () => axios.delete(`/api/favorites/${listingId}`);
+            message = 'Le logement a bien été supprimé de vos favoris.';
         } else {
-            request = () => axios.post(`/api/favorites/${listingId}`)
+            request = () => axios.post(`/api/favorites/${listingId}`);
+            message = 'Le logement a bien été ajoutée à vos favoris.'
         }
 
         await request();
         router.refresh();
-        toast.success('Le logement a bien été ajoutée à vos favoris.');
+        toast.success(message);
     } catch (error) {
-        toast.error('Someting went wrong.');
+        toast.error("Une erreur s'est produite.");
     }
   }, 
   [
