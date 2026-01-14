@@ -20,9 +20,9 @@ const ListingCategory:React.FC<ListingCategoryProps> = ({
             <div className="text-lg font-semibold">
                 {label}
             </div>
-            <div className="text-neutral-500 font-light">
+            {/* <div className="text-neutral-500 font-light">
                 {description}
-            </div>
+            </div> */}
         </div>
     </div>
   </div>);
