@@ -11,7 +11,7 @@ interface EmptyState {
 }
 
 export const EmptyState: React.FC<EmptyState> = ({
-  title = "Aucune correspondances trouvées",
+  title = "Aucune correspondance trouvée",
   subtitle = "Essayez de modifier ou de supprimer certains de vos critères",
   showReset,
 }) => {
