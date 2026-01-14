@@ -42,7 +42,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
 
         await request();
         router.refresh();
-        toast.success('Success');
+        toast.success('Le logement a bien été ajoutée à vos favoris.');
     } catch (error) {
         toast.error('Someting went wrong.');
     }

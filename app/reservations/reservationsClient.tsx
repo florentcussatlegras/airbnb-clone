@@ -52,11 +52,11 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 
     axios.delete(`/api/reservations/${id}`)
       .then(() => {
-        toast.success("reservation cancelled");
+        toast.success("La réservation a bien été annulée.");
         router.refresh();
       })
       .catch(() => {
-        toast.error('Something went wrong.')
+        toast.error("Une erreur s'est produite.")
       })
       .finally(() => {
         setDeletingId('');
@@ -65,7 +65,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
 
   return (
     <Container>
-      <Heading title="Reservations" subtitle="Bookings on your properties" />
+      <Heading title="Reservations" subtitle="Bookez une de nos propriétés." />
       <div className="
         mt-10
         grid

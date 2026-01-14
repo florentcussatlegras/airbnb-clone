@@ -49,7 +49,7 @@ export const LoginModal = () => {
       toast.error(error);
       setIsLoading(false);
     } else {
-      toast.success("Welcome, happy to see you again");
+      toast.success("Bienvenue, heureux de vous revoir");
       loginModal.onClose();
       router.push("/");
       router.refresh();

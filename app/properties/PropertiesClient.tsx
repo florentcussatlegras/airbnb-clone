@@ -27,7 +27,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
 
     axios.delete(`/api/listings/${id}`)
         .then(() => {
-            toast.success('Annonce annulée');
+            toast.success("L' annonce a bien été annulée.");
             router.refresh();
         })
         .catch((error) => {
