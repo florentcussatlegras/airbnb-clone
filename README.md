@@ -1,37 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# airbnb-clone
 
-## Getting Started
+**Airbnb Clone** est une application web inspirée de la plateforme Airbnb, permettant aux utilisateurs de découvrir des logements, consulter leurs détails et effectuer des réservations.  
+L’application met l’accent sur une **expérience utilisateur fluide, moderne et responsive**.
 
-First, run the development server:
+Le projet est développé avec **Next.js et TypeScript**, et utilise **TailwindCSS** pour une interface rapide, élégante et adaptable à tous les écrans.
+
+---
+
+## 🚀 Fonctionnalités principales
+
+- Page d’accueil avec liste des logements disponibles
+- Catalogue de logements :
+  - Cartes de logements
+  - Recherche par destination
+  - Filtres (dates, nombre de voyageurs, prix, etc.)
+- Fiche logement :
+  - Galerie d’images
+  - Description détaillée
+  - Prix par nuit
+  - Informations sur l’hôte
+- Système de réservation :
+  - Sélection des dates
+  - Calcul du prix total
+- Authentification utilisateur :
+  - Inscription / Connexion
+- Espace utilisateur :
+  - Gestion des réservations
+  - Consultation des annonces publiées
+- Interface responsive (desktop, tablette & mobile)
+
+---
+
+## 🛠 Stack technique
+
+- **Framework :** Next.js  
+- **Langage :** TypeScript  
+- **UI / Styling :** TailwindCSS  
+- **Frontend :** React  
+- **Backend :** API Routes Next.js  
+- **Base de données :** MongoDB / PostgreSQL (selon configuration)  
+
+---
+
+## ⚙️ Installation et développement local
+
+### Prérequis
+
+- Node.js 18+
+- npm ou yarn
+
+---
+
+### Cloner le projet
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ton-utilisateur/airbnb-clone.git
+cd airbnb-clone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installer les dépendances
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Lancer le serveur de développement
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Ouvrir l’application
+👉 http://localhost:3000
 
-## Learn More
+### Compiler pour la production
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎯 Utilisation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Parcourez les logements depuis la page d’accueil
 
-## Deploy on Vercel
+Recherchez une destination et sélectionnez vos dates
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Consultez les détails d’un logement
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# airbnb-clone
+Connectez-vous pour effectuer une réservation
+
+Retrouvez vos réservations dans votre espace personnel
+
+---
+
+## 🌐 Démo en ligne
+
+https://airbnb-clone-git-main-florent-cussatlegras-projects.vercel.app/
+
+---
+
+## ⚖️ Licence
+
+Ce projet est open source sous licence MIT.
